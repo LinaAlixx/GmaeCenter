@@ -2,20 +2,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package lab00;
+package gamecenter;
+
+/**
+ *
+ * @author Lenovo
+ */
 
 import java.util.Random;
 import javax.swing.*;
-//import java.io.*;
 
-public class RockPaperScissors{
+public class RockPaperScissors {
+    
     private int input;
     private String [] options = {"rock", "paper", "scissor"};
-  //  private  String playerName;
+    private  String playerName;
     private boolean bool = true;
     
-    public RockPaperScissors(){
-       // playerName = name;
+    public RockPaperScissors(String name){
+        playerName = name;
     }
     
     // simple explaination of the game
@@ -150,8 +155,9 @@ public class RockPaperScissors{
     public boolean isWin(){
         return bool;
     }
-
+    
+    public String toString(){
+ 
+        return ("Done from the game1. Good job, " + playerName);
+    }
 }
-
-
-

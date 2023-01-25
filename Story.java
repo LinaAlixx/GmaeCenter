@@ -2,15 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package lab00;
+package gamecenter;
+
 import javax.swing.*;
+
+
 /**
  *
  * @author Lenovo
  */
 public class Story {
     
-    // simple explaination of the game
+    private String name;
+    
+    public Story(String name){
+        this.name = name;
+    }
+     // simple explaination of the game
     public void explainTheGame(){
         JOptionPane.showMessageDialog(null, 
                 "in this game you will read the story "
@@ -23,10 +31,10 @@ public class Story {
         
         //All images we use in the story
         ImageIcon image1 = new ImageIcon("story1.PNG");
-        ImageIcon image2 = new ImageIcon("story5.JPG");
-        ImageIcon image3 = new ImageIcon("story4.JPG");
-        ImageIcon image4 = new ImageIcon("story6.JPG");
-        ImageIcon image5 = new ImageIcon("story2.JPG");
+        ImageIcon image2 = new ImageIcon("story22.JPG");
+        ImageIcon image3 = new ImageIcon("story33.JPG");
+        ImageIcon image4 = new ImageIcon("story44.JPG");
+        ImageIcon image5 = new ImageIcon("story55.JPG");
         //welcome
         JOptionPane.showMessageDialog(null, 
                 "* * * * * * * * * * * * * * * * * * * * * * * * \n" +
@@ -135,4 +143,7 @@ public class Story {
         return points;
     }
     
+    public String toString(){
+        return ("Done from the game2. Good job, " + name);
+    }
 }

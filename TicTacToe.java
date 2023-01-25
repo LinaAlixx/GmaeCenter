@@ -1,10 +1,16 @@
-
-package average;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package gamecenter;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import javax.swing.JOptionPane;
-
+/**
+ *
+ * @author Lenovo
+ */
 public class TicTacToe {
     private String player1;
     private String player2;
@@ -12,7 +18,7 @@ public class TicTacToe {
     private String turn;
     private String winner;
     
-    public TicTacToe(String user1, String user2){
+    public  void setPlayers(String user1, String user2){
           player1 = user1; //two players will play this game
           player2 = user2;
     }
@@ -20,7 +26,7 @@ public class TicTacToe {
    // simple explaination of the game
     public void explainTheGame(){
         JOptionPane.showMessageDialog(null, 
-                "In this game you will two player. One will be X"
+                "In this game you we will play against each other. One will be X"
                         + "and other will be O.\n"
                         + "There are 9 places to put the mark in.\n"
                         + "The first Player get 3 of his/her mark in row(up,"
@@ -192,7 +198,11 @@ public class TicTacToe {
                 + "'s have won! Thanks for playing.",
                 "TicTacToe",1);
         }
-
+       
     }
-
+    
+        public String toString(){
+        return ("Done from the game3. Good job, "
+                + player1 + " and " + player2);
+    }
 }
