@@ -1,13 +1,13 @@
 
 package gamecenter;
 
-
 import java.io.*;
 import javax.swing.*;
 
 public class GameCenter {
 
     public static void main(String[] args) throws IOException{
+        
         int numPlayers;
         String inputStr;
         int points;
@@ -16,38 +16,51 @@ public class GameCenter {
         String[] options = {"Yes", "No"};
         String[] names;
         int[] pointsList;
-
-        //play.welcome();
-//        AboutUs aboutUs = new AboutUs("This application made as a project", "22,Jan 2023", "Ibtihal Al-Saqaf");
-//        ContactUs contact = new ContactUs("Lina Ali", "2216609", "computer");
-//        Details ourDetails = new Details("Game Center\n", aboutUs, contact);
-//        System.out.println(ourDetails.printDetails());
         
         Players play = new Players();
+        //show welcom to users
+        //play.welcome();
+
+        //information about us and this project
+        ContactUs student1 = new ContactUs("Ahad Alqahtani", "2113641", "2113641@uj.edu.sa");
+        ContactUs student2 = new ContactUs("Lina Ali", "2216609", "2216609@uj.edu.sa");
+
+        AboutUs info = new AboutUs("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tGame Center",
+                "\nThis program was made to help people, mostly children, to improve\n" +
+                        "their problem-solving skills by playing fun games."
+                        + "\n\nThis is a project for the Object Oriented Programming course.",
+                "Dr. Ibtihal Al-Saqqaf", student1, student2);
+
+        info.describe();
+//        info.showStudent1();
+//        info.showStudent2();
+
+        
         //numbsrs of players
         numPlayers = play.getNumOfPlayers();
-        //play.setPlayers();
 
-        //int[] pointsArray = new int[numPlayers];
+        //two lists for names and points
         names = new String[numPlayers];
         pointsList = new int[numPlayers];
-        //int[] pointsArray = new int[numPlayers];
-        //names of players...
+        
+        //names of players
         int i;
         for (i = 0; i < numPlayers; ++i) {
             names[i] = JOptionPane.showInputDialog(
                     "Enter the name for player" + (i + 1) + ":");
         }
-        //..
+        
+        //
         for (int j = 0; j < numPlayers; ++j) {
             points = 0;
             play.welcom(j, names[j]);
-            //...
             again = 0;
+            //
             while (again == 0) {
+                //choosing game
                 inputStr = play.getGame();
-
                 switch (inputStr) {
+                    
                     case "1.Rock Paper Sicssors":
                         RockPaperScissors game1 = new RockPaperScissors(names[j]);
                         game1.explainTheGame();
@@ -107,10 +120,19 @@ public class GameCenter {
                             }
                         }
                         break;
+                        
                     case "4.Pop Quiz":
-                        Quiz game4 = new Quiz();
+                        Quiz game4 = new Quiz(names[j]);
+                        points += game4.PopQuiz();
+                        game4.toString();
                         break;
-                    case "6.see result (All players are done)":
+                        
+                    case "5.Hangman":
+                        Hangman game5 = new Hangman(names[j]);
+                        //game5.hangmanImage();
+                        points += game5.points();
+                        game5.toString();
+                        break;
 
                 }
                 pointsList[j] += points;
@@ -119,16 +141,16 @@ public class GameCenter {
                         "You want to play in game center again? ", "Again",
                         0, 3, null,
                         options, options[0]);
-
-            }
-            for (int c = 0; c < numPlayers; c++) {
-                System.out.println(pointsList[c]);
             }
         }
+        
         play.setArray(pointsList, names);
-        String output = play.toString();
-        play.file();//throws IOException;
+        String output = play.printDetails();
+        play.file();
         JOptionPane.showMessageDialog(null,output, "results",1);
+        info.showStudent1();
+        info.showStudent2();
+        play.goodBye();
         System.exit(0);
     }
 
