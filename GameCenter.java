@@ -2,11 +2,12 @@
 package gamecenter;
 
 
+import java.io.*;
 import javax.swing.*;
 
 public class GameCenter {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
         int numPlayers;
         String inputStr;
         int points;
@@ -17,10 +18,10 @@ public class GameCenter {
         int[] pointsList;
 
         //play.welcome();
-        AboutUs aboutUs = new AboutUs("This application made as a project", "22,Jan 2023", "Ibtihal Al-Saqaf");
-        ContactUs contact = new ContactUs("Lina Ali", "2216609", "computer");
-        Details ourDetails = new Details("Game Center\n", aboutUs, contact);
-        System.out.println(ourDetails);
+//        AboutUs aboutUs = new AboutUs("This application made as a project", "22,Jan 2023", "Ibtihal Al-Saqaf");
+//        ContactUs contact = new ContactUs("Lina Ali", "2216609", "computer");
+//        Details ourDetails = new Details("Game Center\n", aboutUs, contact);
+//        System.out.println(ourDetails.printDetails());
         
         Players play = new Players();
         //numbsrs of players
@@ -106,11 +107,11 @@ public class GameCenter {
                             }
                         }
                         break;
+                    case "4.Pop Quiz":
+                        Quiz game4 = new Quiz();
+                        break;
                     case "6.see result (All players are done)":
-                        //play.result();message all info in result file
-                        //info()
-                        //play.bye();
-                        System.exit(0);
+
                 }
                 pointsList[j] += points;
 
@@ -124,6 +125,11 @@ public class GameCenter {
                 System.out.println(pointsList[c]);
             }
         }
+        play.setArray(pointsList, names);
+        String output = play.toString();
+        play.file();//throws IOException;
+        JOptionPane.showMessageDialog(null,output, "results",1);
+        System.exit(0);
     }
 
 }
