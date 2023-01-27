@@ -1,13 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package gamecenter;
 
-/**
- *
- * @author Lenovo
- */
 import javax.swing.JOptionPane;
 
 public class Hangman{
@@ -17,9 +10,9 @@ public class Hangman{
     private static String asterisk = new String(new char[word.length()]).replace("\0", "*");
     private static int count = 0;
     int points = 0;
-    private String playerName;
+  //  private String playerName;
     
-    public Hangman(String playerName){
+    public Hangman(){
         JOptionPane.showMessageDialog(null, 
         "* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n" +
         "    Welcome to the Hangman Game! .|^__^|. \n" +
@@ -30,10 +23,11 @@ public class Hangman{
         JOptionPane.showMessageDialog(null, "For every wrong guess, a picture will be drawn. " 
         + "If the picture is completed then you have lost.");
 
-        while (count < 7 && asterisk.contains("*")) {
+        while (count < 6 && asterisk.contains("*")) {//بس الكاونت خليته اقل من ستةبدل السبعة  
             String guess;
-            guess = JOptionPane.showInputDialog("Guess any letter in the word");
             JOptionPane.showMessageDialog(null, asterisk);
+            guess = JOptionPane.showInputDialog("Guess any letter in the word");
+            //JOptionPane.showMessageDialog(null, asterisk); هذا السطر اللي غيرته طلعته فوق
             hang(guess);
         }
          
@@ -134,7 +128,7 @@ public class Hangman{
         }
     }
     
-    public String toString(){
+    public String toString(String playerName){
  
         return ("Done from the game5. Good job, " + playerName);
     }
