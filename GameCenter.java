@@ -31,7 +31,7 @@ public class GameCenter {
                         + "\n\nThis is a project for the Object Oriented Programming course.",
                 "Dr. Ibtihal Al-Saqqaf", student1, student2);
 
-        info.describe();
+  //      info.describe();
 //        info.showStudent1();
 //        info.showStudent2();
 
@@ -102,7 +102,7 @@ public class GameCenter {
                         game3.setPlayers(names[j], inputStr);
                         game3.explainTheGame();
                         game3.play();
-                        game3.toString();
+                        System.out.println(game3.toString());
                         if (game3.checkWinner().equals(names[j])) {
                             points += 6;
                         } else if (game3.checkWinner().equals("draw")) {
@@ -124,14 +124,14 @@ public class GameCenter {
                     case "4.Pop Quiz":
                         Quiz game4 = new Quiz(names[j]);
                         points += game4.PopQuiz();
-                        game4.toString();
+                        System.out.println(game4.toString());
                         break;
                         
                     case "5.Hangman":
-                        Hangman game5 = new Hangman(names[j]);
-                        //game5.hangmanImage();
+                        Hangman game5 = new Hangman();
+                        
                         points += game5.points();
-                        game5.toString();
+                        System.out.println(game5.toString(names[j]));
                         break;
 
                 }
@@ -148,6 +148,7 @@ public class GameCenter {
         String output = play.printDetails();
         play.file();
         JOptionPane.showMessageDialog(null,output, "results",1);
+        info.describe();
         info.showStudent1();
         info.showStudent2();
         play.goodBye();
