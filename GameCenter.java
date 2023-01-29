@@ -16,6 +16,7 @@ public class GameCenter {
         String[] options = {"Yes", "No"};
         String[] names;
         int[] pointsList;
+        String date;
         
         Players play = new Players();
         //show welcom to users
@@ -52,11 +53,12 @@ public class GameCenter {
         
         //
         for (int j = 0; j < numPlayers; ++j) {
-            points = 0;
+           // points = 0;
             play.welcom(j, names[j]);
             again = 0;
             //
             while (again == 0) {
+                points = 0;
                 //choosing game
                 inputStr = play.getGame();
                 switch (inputStr) {
@@ -129,7 +131,7 @@ public class GameCenter {
                         
                     case "5.Hangman":
                         Hangman game5 = new Hangman();
-                        
+                        //game5.hangman();
                         points += game5.points();
                         System.out.println(game5.toString(names[j]));
                         break;
@@ -146,8 +148,14 @@ public class GameCenter {
         
         play.setArray(pointsList, names);
         String output = play.printDetails();
-        play.file();
+     
         JOptionPane.showMessageDialog(null,output, "results",1);
+        date = JOptionPane.showInputDialog(
+                "All information will save in \"Results.txt\"."
+                        + "\nPlease, enter the date:"
+                        + "\n    day/month/year");
+        play.file(date);
+        
         info.describe();
         info.showStudent1();
         info.showStudent2();

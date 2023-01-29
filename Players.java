@@ -112,14 +112,17 @@ public class Players {
         }  
        return output;
     }
-        public void file() throws IOException{
-            PrintWriter outputFile = new PrintWriter("Result.txt");
+        public void file(String date) throws IOException{
+            FileWriter fw = new FileWriter("Results.txt", true);
+            PrintWriter outputFile = new PrintWriter(fw);
             for(int i = 0; i < numPlayers; i++){
                 outputFile.println(namesList[i]+ "   " + pointsList[i]);
             }
+            outputFile.println(date);
+            outputFile.println(" ");
             outputFile.close();
             
-            File file = new File("Result.txt");
+            File file = new File("Results.txt");
             Scanner inputFile = new Scanner(file);
             
             while(inputFile.hasNext()){
