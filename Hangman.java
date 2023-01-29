@@ -6,13 +6,17 @@ import javax.swing.JOptionPane;
 public class Hangman{
 
     private static String[] words = { "rice", "banana", "computer", "cow", "rain", "water" }; // array of words to guess
-    private static String word = words[(int) (Math.random() * words.length)];
-    private static String asterisk = new String(new char[word.length()]).replace("\0", "*");
-    private static int count = 0;
+    private static String word;
+    private static String asterisk;
+    private static int count;
     int points = 0;
-  //  private String playerName;
+  
     
     public Hangman(){
+        count = 0;
+        points = 0;
+        word = words[(int) (Math.random() * words.length)];
+        asterisk = new String(new char[word.length()]).replace("\0", "*");
         JOptionPane.showMessageDialog(null, 
         "* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n" +
         "    Welcome to the Hangman Game! .|^__^|. \n" +
@@ -53,20 +57,11 @@ public class Hangman{
         }
         if (asterisk.equals(word)){
             JOptionPane.showMessageDialog(null, "Correct! You win! The word was " + word);
-            points += 6;
+            points = 6;
         }
         
     }
-    
-    public int points(){
-        if(points == 6){
-            return points;
-        }
-        else{
-            return 0;
-        }
-    }
-    
+        
 
     public void hangmanImage() {
         if (count == 1) {
@@ -128,6 +123,14 @@ public class Hangman{
         }
     }
     
+    public int points(){
+        if(points == 6){
+            return points;
+        }
+        else{
+            return 0;
+        }
+    }
     public String toString(String playerName){
  
         return ("Done from the game5. Good job, " + playerName);

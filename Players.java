@@ -37,19 +37,38 @@ public class Players {
     }
     
     public int getNumOfPlayers(){
+        numPlayers = -1;
+        while(numPlayers <= 0){
          inputStr = JOptionPane.showInputDialog(
                 "How many Players will play in Game Center?");
-        numPlayers = Integer.parseInt(inputStr);
-        while(numPlayers <= 0){
-            JOptionPane.showMessageDialog(null, 
-                    "You cann't enter 0, "
-                            + "less than 0 or floating point number."
-                            + "\nTry again. ", 
-                    "Error", 0);
-            inputStr = JOptionPane.showInputDialog(
-                "How many Players will play in Game Center?");
-        numPlayers = Integer.parseInt(inputStr);
+        //numPlayers = Integer.parseInt(inputStr);
+            try {
+                
+                numPlayers = Integer.parseInt(inputStr);
+                if (numPlayers <= 0) {
+                    JOptionPane.showMessageDialog(null,
+                        "Invalid input; re-enter again",
+                    "TicTacToe",0);
+                    continue;
+                }
+            }
+            catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null,
+                    "Invalid input; re-enter again",
+                    "TicTacToe",0);
+                continue;
+            }
         }
+//        while(numPlayers <= 0){
+//            JOptionPane.showMessageDialog(null, 
+//                    "You cann't enter 0, "
+//                            + "less than 0 or floating point number."
+//                            + "\nTry again. ", 
+//                    "Error", 0);
+//            inputStr = JOptionPane.showInputDialog(
+//                "How many Players will play in Game Center?");
+//        numPlayers = Integer.parseInt(inputStr);
+//        }
         return numPlayers;
     }
     
