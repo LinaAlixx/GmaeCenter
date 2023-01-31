@@ -18,10 +18,12 @@ public class GameCenter {
         int[] pointsList;
         String date;
         
+        new MyFrame();
+        
         Players play = new Players();
         //show welcom to users
         //play.welcome();
-
+        
         //information about us and this project
         ContactUs student1 = new ContactUs("Ahad Alqahtani", "2113641", "2113641@uj.edu.sa");
         ContactUs student2 = new ContactUs("Lina Ali", "2216609", "2216609@uj.edu.sa");
@@ -31,10 +33,10 @@ public class GameCenter {
                         "their problem-solving skills by playing fun games."
                         + "\n\nThis is a project for the Object Oriented Programming course.",
                 "Dr. Ibtihal Al-Saqqaf", student1, student2);
-
-  //      info.describe();
-//        info.showStudent1();
-//        info.showStudent2();
+        
+        info.describe();
+        info.showStudent1();
+        info.showStudent2();
 
         
         //numbsrs of players
@@ -54,7 +56,7 @@ public class GameCenter {
         //
         for (int j = 0; j < numPlayers; ++j) {
            // points = 0;
-            play.welcom(j, names[j]);
+            play.welcome(names[j]);
             again = 0;
             //
             while (again == 0) {
@@ -65,9 +67,7 @@ public class GameCenter {
                     
                     case "1.Rock Paper Sicssors":
                         RockPaperScissors game1 = new RockPaperScissors(names[j]);
-                        game1.explainTheGame();
-                        game1.play();
-                        if (game1.isWin()) {
+                        if (game1.getBool()) {
                             ++points;
                         }
                         System.out.println(game1.toString());
@@ -75,8 +75,6 @@ public class GameCenter {
 
                     case "2.Story":
                         Story game2 = new Story(names[j]);
-                        game2.explainTheGame();
-                        game2.tomSawer();
                         points += game2.quizAndPoints();
                         System.out.println(game2.toString());
                         break;
@@ -100,10 +98,7 @@ public class GameCenter {
                             break;
                         }
 
-                        TicTacToe game3 = new TicTacToe();
-                        game3.setPlayers(names[j], inputStr);
-                        game3.explainTheGame();
-                        game3.play();
+                        TicTacToe game3 = new TicTacToe(names[j], inputStr);
                         System.out.println(game3.toString());
                         if (game3.checkWinner().equals(names[j])) {
                             points += 6;
@@ -131,7 +126,6 @@ public class GameCenter {
                         
                     case "5.Hangman":
                         Hangman game5 = new Hangman();
-                        //game5.hangman();
                         points += game5.points();
                         System.out.println(game5.toString(names[j]));
                         break;
@@ -156,10 +150,8 @@ public class GameCenter {
                         + "\n    day/month/year");
         play.file(date);
         
-        info.describe();
-        info.showStudent1();
-        info.showStudent2();
         play.goodBye();
+       // new MyFrame();
         System.exit(0);
     }
 

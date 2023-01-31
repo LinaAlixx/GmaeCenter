@@ -1,24 +1,45 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package gamecenter;
 
 import javax.swing.*;
 
-
-/**
- *
- * @author Lenovo
- */
-public class Story {
-    
+public class Story {    
     private String name;
-    
+    /**
+     * This constructor initializes the names of players and call two methods.
+     * explainTheGame method and play method
+     * @param name The player name.
+     */
     public Story(String name){
         this.name = name;
+        explainTheGame();
+        tomSawer();
     }
-     // simple explaination of the game
+    /**
+     * the copy constructor initializes the object as
+     * a copy of another TicTacToe object.
+     * @param obj2 The object to copy.
+     */
+    public Story(Story obj2){
+        name = obj2.name;
+    }
+    /**
+     * This method est value for this field
+     * @param name The player name
+     */
+    public void setName(String name){
+        this.name = name;
+    }
+    /**
+     * This method return player name
+     * @return Player name.
+     */
+    public String getName(){
+        return name;
+    }
+    /**
+     * This method give simple explanation of the game
+     */
     public void explainTheGame(){
         JOptionPane.showMessageDialog(null, 
                 "in this game you will read the story "
@@ -26,7 +47,9 @@ public class Story {
                         + "and you will get one point for each questions", 
                 "Story", 2);
     }
-    //the story
+    /**
+     * This method show Tom Sawer story
+     */
     public void tomSawer(){
         
         //All images we use in the story
@@ -100,8 +123,10 @@ public class Story {
                     + " the thing difficult to obtain", "story",
                     JOptionPane.PLAIN_MESSAGE, image5);
     }
-    //simple quiz and points for the quiz
-    //return the points
+    /**
+     * simple quiz and points for the quiz and return the points
+     * @return The points.
+     */
     public int quizAndPoints(){
         int points = 0;//one point for each right anwser
         int input;//the player answer
@@ -119,6 +144,7 @@ public class Story {
         //check the answer        
         if(input == 0){
             ++points;
+            
         }
         //the question num2
         input = JOptionPane.showOptionDialog(null, 
@@ -142,7 +168,11 @@ public class Story {
         
         return points;
     }
-    
+    /**
+     * toString method  
+     * @return return motivational phrase with the name of player
+     *
+     */
     public String toString(){
         return ("Done from the game2. Good job, " + name);
     }

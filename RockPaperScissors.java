@@ -1,29 +1,66 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package gamecenter;
 
-/**
- *
- * @author Lenovo
- */
 
 import java.util.Random;
 import javax.swing.*;
+/**
+ * This class is Rock-Paper-Scissors game 
+ * 
+ */
 
-public class RockPaperScissors {
+public class RockPaperScissors {//
     
-    private int input;
-    private String [] options = {"rock", "paper", "scissor"};
     private  String playerName;
-    private boolean bool = true;
-    
-    public RockPaperScissors(String name){
+    private boolean bool;
+    /**
+     * This constructor initializes the name of player and call two methods.
+     * explainTheGame method and play method
+     * @param name The name of player.
+     */
+    public RockPaperScissors(String name){       
         playerName = name;
+        explainTheGame();
+        play();
     }
-    
-    // simple explaination of the game
+    /**
+     * the copy constructor initializes the object as
+     *  a copy of another RockPaperScissors object.
+     * @param obj2 The object to copy.
+     */
+    public RockPaperScissors(RockPaperScissors obj2){
+        playerName = obj2.playerName;
+        bool = obj2.bool;
+    }
+    /**
+     * This method set a value for each field. 
+     * @param playerName The Player Name.
+     * @param bool Boolean variable that become true if the 
+     * user win else it is false.
+     */
+    public void set(String playerName, boolean bool){
+        this.playerName = playerName;
+        this.bool = bool;
+    }
+    /**
+     * This method return the player name
+     * @return The payer name.
+     */
+    public String getPlayerName(){
+        return playerName;
+    }
+    /**
+     * This method return true if the user win and false 
+     * if the user lose
+     * @return Boolean variable become true if the 
+     * user win else it is false.
+     */
+    public boolean getBool(){
+        return bool;
+    }
+    /**
+     * This method give simple explanation of the game
+     */
     public void explainTheGame(){
         JOptionPane.showMessageDialog(null,
                 "In this game choose rock, paper or scissors."
@@ -33,20 +70,23 @@ public class RockPaperScissors {
                 + "You will get one point if you win",
                 "RockPaperSicssor",2);
     }
-    
-    //the game
+    /**
+     * This method play the game
+     */
     public void play(){
         //welcome
         JOptionPane.showMessageDialog(null, 
-        "* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n" +
-        "  Welcome to rock paper scissor game .|^__^|. \n" +
-        "* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n",
+        "* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n"+
+        "  Welcome to rock paper scissor game .|^__^|.\n" 
+        + "* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n",
         "RockPaperScissors", 1);
         
         //we use to make the program choose at random rock, paper or scissors
         Random rand = new Random();
         
         //the player choose rock, paper or scissors
+        String [] options = {"rock", "paper", "scissor"};
+        int input;
         input = JOptionPane.showOptionDialog(null,
                 "Please, choose:",
                 "rockPaperScissor", 
@@ -151,13 +191,12 @@ public class RockPaperScissors {
         }// end of switch               
     }// end of method play
     
-//return true if the player won    
-    public boolean isWin(){
-        return bool;
-    }
-    
+    /**
+     * toString method  
+     * @return return motivational phrase with the name of player
+     *
+     */
     public String toString(){
- 
         return ("Done from the game1. Good job, " + playerName);
     }
 }
